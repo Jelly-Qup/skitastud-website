@@ -57,15 +57,32 @@
         }
 
         .hero {
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(man-on-a-toilet-getting-electrocuted.jpg);
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 25%, #60a5fa 50%, #fbbf24 75%, #f59e0b 100%);
             background-size: cover;
             background-position: center;
+            background-attachment: fixed;
             height: 500px;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
             color: white;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.3);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
         }
 
         .hero-content h1 {
@@ -383,8 +400,8 @@
             <h2 style="text-align: center; font-size: 2.5rem; color: #1e3c72; margin-bottom: 2rem;">Þjónusta okkar</h2>
             
             <div class="tabs">
-                <button class="tab-button active" onclick="showTab('rafvirkja')">⚡ Rafvirkja hluti</button>
-                <button class="tab-button" onclick="showTab('pipara')">🔧 Pípara hluti</button>
+                <button class="tab-button active" onclick="showTab('rafvirkja', this)">⚡ Rafvirkja hluti</button>
+                <button class="tab-button" onclick="showTab('pipara', this)">🔧 Pípara hluti</button>
             </div>
 
             <div id="rafvirkja" class="tab-content active">
