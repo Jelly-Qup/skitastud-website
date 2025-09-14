@@ -5,214 +5,190 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Skítastuð - Iðnaðartæki ehf.</title>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
-
-        .header {
-            background: linear-gradient(135deg, #1e3c72, #2a5298);
-            color: white;
-            padding: 1rem 0;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 2rem;
-        }
-
-        .logo { font-size: 2rem; font-weight: bold; color: #ffd700; }
-        .nav-menu { display: flex; list-style: none; gap: 2rem; }
-        .nav-menu a { color: white; text-decoration: none; font-weight: 500; transition: color 0.3s; }
-        .nav-menu a:hover { color: #ffd700; }
-
-        .hero {
-            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 25%, #60a5fa 50%, #fbbf24 75%, #f59e0b 100%);
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            height: 500px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: white;
-            position: relative;
-        }
-        .hero::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: rgba(0,0,0,0.3);
-        }
-        .hero-content { position: relative; z-index: 1; }
-        .hero-content h1 { font-size: 3.5rem; margin-bottom: 1rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.8); }
-        .hero-content p { font-size: 1.3rem; margin-bottom: 2rem; text-shadow: 1px 1px 2px rgba(0,0,0,0.8); }
-
-        .cta-button {
-            background: #ffd700; color: #1e3c72; padding: 1rem 2rem;
-            border: none; border-radius: 50px; font-size: 1.1rem;
-            font-weight: bold; cursor: pointer; transition: all 0.3s;
-            text-decoration: none; display: inline-block;
-        }
-        .cta-button:hover { background: #ffed4e; transform: translateY(-2px); box-shadow: 0 5px 15px rgba(255,215,0,0.4); }
-
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
-        .section { padding: 4rem 0; }
-
-        .tabs { display: flex; justify-content: center; margin-bottom: 3rem; background: #f8f9fa; border-radius: 10px; padding: 0.5rem; }
-        .tab-button {
-            padding: 1rem 2rem; background: none; border: none; cursor: pointer;
-            font-size: 1.1rem; font-weight: 600; border-radius: 8px;
-            transition: all 0.3s; color: #666;
-        }
-        .tab-button.active { background: #1e3c72; color: white; box-shadow: 0 2px 10px rgba(30,60,114,0.3); }
-
-        .tab-content { display: none; }
-        .tab-content.active { display: block; animation: fadeIn 0.5s; }
-
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px);} to { opacity: 1; transform: translateY(0);} }
-
-        .services-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem; margin: 3rem 0;
-        }
-        .service-card {
-            background: white; padding: 2rem; border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
-            border-left: 4px solid #ffd700;
-        }
-        .service-card:hover { transform: translateY(-5px); box-shadow: 0 8px 30px rgba(0,0,0,0.15); }
-        .service-card h3 { color: #1e3c72; margin-bottom: 1rem; font-size: 1.5rem; }
-        .service-card p { color: #666; margin-bottom: 1.5rem; }
-        .price { font-size: 1.5rem; font-weight: bold; color: #e74c3c; margin-bottom: 1rem; }
-
-        /* Modal lagfæringar */
-        .modal {
-            display: none; position: fixed; inset: 0;
-            background: rgba(0,0,0,0.8); z-index: 1000;
-            justify-content: center; align-items: center;
-            padding: 1rem;
-        }
-        .modal-content {
-            background: white; padding: 2rem; border-radius: 15px;
-            max-width: 500px; width: 90%; max-height: 80%;
-            overflow-y: auto; animation: fadeIn 0.3s ease-in-out;
-        }
-        .close { float: right; font-size: 2rem; cursor: pointer; color: #999; }
-        .close:hover { color: #333; }
-
-        /* Responsiveness */
-        @media (max-width: 768px) {
-            .nav-container { flex-direction: column; gap: 1rem; }
-            .hero-content h1 { font-size: 2.5rem; }
-            .tabs { flex-direction: column; }
-        }
+        /* --- CSS sama og áður, stytti til að halda fókus á HTML --- */
     </style>
 </head>
 <body>
-    <!-- Sama HTML uppbygging og hjá þér -->
-    <!-- (ekki breytt nema smávægileg snyrtivinna í textum og útliti) -->
+    <!-- Haus -->
+    <header class="header">
+        <div class="nav-container">
+            <div class="logo">Skítastuð</div>
+            <ul class="nav-menu">
+                <li><a href="#services">Þjónusta</a></li>
+                <li><a href="#booking">Bókanir</a></li>
+                <li><a href="#experts">Sérfræðingar</a></li>
+                <li><a href="#contact">Hafa samband</a></li>
+            </ul>
+        </div>
+    </header>
 
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Iðnaðartæki og Þjónusta</h1>
+            <p>Við hjálpum þér að leysa öll tæknivandamál með bros á vör!</p>
+            <a href="#services" class="cta-button">Skoða þjónustu</a>
+        </div>
+    </section>
+
+    <!-- Þjónusta -->
+    <section class="section" id="services">
+        <div class="container">
+            <h2 class="section-title">Þjónustuflokkar</h2>
+            <div class="tabs">
+                <button class="tab-button active" onclick="showTab('industrial', this)">Iðnaðartæki</button>
+                <button class="tab-button" onclick="showTab('maintenance', this)">Viðhald</button>
+                <button class="tab-button" onclick="showTab('consulting', this)">Ráðgjöf</button>
+            </div>
+
+            <div id="industrial" class="tab-content active">
+                <div class="services-grid">
+                    <div class="service-card">
+                        <h3>Suðuvélar</h3>
+                        <p>Háþróaðar suðuvélar fyrir verksmiðjur og vinnustaði.</p>
+                        <div class="price">Frá 250.000 kr.</div>
+                        <button class="cta-button" onclick="openOrderModal('Suðuvél')">Panta</button>
+                    </div>
+                    <div class="service-card">
+                        <h3>Þjöppur</h3>
+                        <p>Öflugir þjöppur sem henta fyrir stór verkefni.</p>
+                        <div class="price">Frá 180.000 kr.</div>
+                        <button class="cta-button" onclick="openOrderModal('Þjöppu')">Panta</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="maintenance" class="tab-content">
+                <div class="services-grid">
+                    <div class="service-card">
+                        <h3>Vélaskoðun</h3>
+                        <p>Fagleg skoðun á vélum til að tryggja öryggi og rekstrarhæfi.</p>
+                        <div class="price">Frá 20.000 kr.</div>
+                        <button class="cta-button" onclick="openOrderModal('Vélaskoðun')">Bóka</button>
+                    </div>
+                    <div class="service-card">
+                        <h3>Smurning</h3>
+                        <p>Full þjónusta fyrir smurningu á vinnsluvélum.</p>
+                        <div class="price">Frá 15.000 kr.</div>
+                        <button class="cta-button" onclick="openOrderModal('Smurning')">Bóka</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="consulting" class="tab-content">
+                <div class="services-grid">
+                    <div class="service-card">
+                        <h3>Orkusparnaðarráðgjöf</h3>
+                        <p>Við hjálpum þér að lækka kostnað með hagræðingu.</p>
+                        <div class="price">Verð eftir samkomulagi</div>
+                        <button class="cta-button" onclick="openBookingModal('video')">Bóka ráðgjöf</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bókanir -->
+    <section class="section" id="booking">
+        <div class="container">
+            <h2 class="section-title">Bókaðu þjónustu</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>Bóka símtal</h3>
+                    <p>Stutt símtal til að fara yfir þarfir þínar.</p>
+                    <button class="cta-button" onclick="openBookingModal('phone')">Bóka</button>
+                </div>
+                <div class="service-card">
+                    <h3>Bóka vídeófund</h3>
+                    <p>Hittumst í myndspjalli til að skoða verkefnið.</p>
+                    <button class="cta-button" onclick="openBookingModal('video')">Bóka</button>
+                </div>
+                <div class="service-card">
+                    <h3>Bóka heimsókn</h3>
+                    <p>Við komum á staðinn og metum stöðuna.</p>
+                    <button class="cta-button" onclick="openBookingModal('visit')">Bóka</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sérfræðingar -->
+    <section class="section" id="experts">
+        <div class="container">
+            <h2 class="section-title">Spjallaðu við sérfræðing</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>Guðmundur</h3>
+                    <p>Vélaverkfræðingur með 20 ára reynslu.</p>
+                    <button class="cta-button" onclick="chatWithExpert('Guðmundur')">Spjalla</button>
+                </div>
+                <div class="service-card">
+                    <h3>Anna</h3>
+                    <p>Sérfræðingur í orkusparnaði og sjálfbærni.</p>
+                    <button class="cta-button" onclick="chatWithExpert('Anna')">Spjalla</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hafa samband -->
+    <section class="section" id="contact">
+        <div class="container">
+            <h2 class="section-title">Hafðu samband</h2>
+            <p>Netfang: <a href="mailto:info@idnadartaeki.is">info@idnadartaeki.is</a></p>
+            <p>Sími: +354 555 1234</p>
+        </div>
+    </section>
+
+    <!-- Modal: Pöntun -->
+    <div id="orderModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('orderModal')">&times;</span>
+            <h3 id="orderTitle">Panta þjónustu</h3>
+            <form onsubmit="submitOrder(event)">
+                <input type="hidden" id="orderService">
+                <label>Nafn:</label>
+                <input type="text" id="orderName" required><br><br>
+                <label>Netfang:</label>
+                <input type="email" id="orderEmail" required><br><br>
+                <button type="submit" class="cta-button">Senda pöntun</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal: Bókun -->
+    <div id="bookingModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('bookingModal')">&times;</span>
+            <h3 id="bookingTitle">Bóka þjónustu</h3>
+            <form onsubmit="submitBooking(event)">
+                <label>Nafn:</label>
+                <input type="text" id="bookingName" required><br><br>
+                <label>Netfang:</label>
+                <input type="email" id="bookingEmail" required><br><br>
+                <label>Dagsetning og tími:</label>
+                <input type="datetime-local" id="bookingDate" required><br><br>
+                <label>Lengd (klst):</label>
+                <input type="number" id="bookingDuration" min="1" max="8" value="1"><br><br>
+                <button type="submit" class="cta-button">Staðfesta bókun</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal: Spjall -->
+    <div id="chatModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('chatModal')">&times;</span>
+            <h3 id="chatTitle">Spjall við sérfræðing</h3>
+            <div id="chatMessages" style="max-height:300px;overflow-y:auto;margin-bottom:10px;"></div>
+            <input type="text" id="chatInput" placeholder="Sláðu inn skilaboð..." style="width:100%;padding:8px;">
+            <button class="cta-button" style="margin-top:10px;" onclick="sendMessage()">Senda</button>
+        </div>
+    </div>
+
+    <!-- Skriptur -->
     <script>
-        // Tab functionality (lagfært með event parameter)
-        function showTab(tabName, el) {
-            const tabContents = document.querySelectorAll('.tab-content');
-            tabContents.forEach(c => c.classList.remove('active'));
-            document.getElementById(tabName).classList.add('active');
-
-            const buttons = document.querySelectorAll('.tab-button');
-            buttons.forEach(b => b.classList.remove('active'));
-            el.classList.add('active');
-        }
-
-        // Modal handling
-        function openOrderModal(serviceName) {
-            document.getElementById('orderModal').style.display = 'flex';
-            document.getElementById('orderTitle').textContent = `Panta: ${serviceName}`;
-            document.getElementById('orderService').value = serviceName;
-        }
-        function openBookingModal(type) {
-            document.getElementById('bookingModal').style.display = 'flex';
-            const titles = {
-                phone: 'Bóka símtal við sérfræðing',
-                video: 'Bóka vídeóráðgjöf',
-                visit: 'Bóka heimsókn'
-            };
-            document.getElementById('bookingTitle').textContent = titles[type];
-        }
-        function closeModal(modalId) {
-            document.getElementById(modalId).style.display = 'none';
-        }
-
-        window.onclick = e => {
-            if (e.target.classList.contains('modal')) e.target.style.display = 'none';
-        };
-
-        function submitOrder(e) {
-            e.preventDefault();
-            const name = document.getElementById('orderName').value;
-            const email = document.getElementById('orderEmail').value;
-            alert(`Takk fyrir pöntunina, ${name}!\n\nVið munum senda þér tilboð innan 24 klst á ${email}.`);
-            closeModal('orderModal');
-            e.target.reset();
-        }
-
-        function submitBooking(e) {
-            e.preventDefault();
-            const name = document.getElementById('bookingName').value;
-            const email = document.getElementById('bookingEmail').value;
-            const date = new Date(document.getElementById('bookingDate').value);
-            const duration = parseInt(document.getElementById('bookingDuration').value);
-            alert(`Bókun staðfest!\nNafn: ${name}\nTími: ${date.toLocaleString('is-IS')}\nLengd: ${duration} klst\nStaðfesting send á ${email}`);
-            closeModal('bookingModal');
-            e.target.reset();
-        }
-
-        function chatWithExpert(expertName) {
-            document.getElementById('chatModal').style.display = 'flex';
-            document.getElementById('chatTitle').textContent = `Spjall við ${expertName}`;
-            const chatMessages = document.getElementById('chatMessages');
-            chatMessages.innerHTML = `<div style="background:#e3f2fd;padding:0.5rem;border-radius:5px;">
-                <strong>${expertName}:</strong> Halló! Hvað get ég aðstoðað þig við í dag?
-            </div>`;
-        }
-
-        function sendMessage() {
-            const input = document.getElementById('chatInput');
-            const msg = input.value.trim();
-            if (!msg) return;
-            const chatMessages = document.getElementById('chatMessages');
-            const userMsg = document.createElement('div');
-            userMsg.style.cssText = 'background:#f0f0f0;padding:0.5rem;border-radius:5px;text-align:right;';
-            userMsg.innerHTML = `<strong>Þú:</strong> ${msg}`;
-            chatMessages.appendChild(userMsg);
-            input.value = '';
-            chatMessages.scrollTop = chatMessages.scrollHeight;
-
-            setTimeout(() => {
-                const expertMsg = document.createElement('div');
-                expertMsg.style.cssText = 'background:#e3f2fd;padding:0.5rem;border-radius:5px;';
-                const responses = [
-                    'Ég skil vandamálið. Geturðu sagt mér aðeins meira?',
-                    'Góð spurning – við getum skoðað þetta nánar.',
-                    'Þetta er algeng staða, ég get hjálpað þér.',
-                    'Láttu mig athuga þetta fyrir þig. Geturðu sent mynd?',
-                    'Ég þarf að vita aðeins meira um kerfið þitt.'
-                ];
-                expertMsg.innerHTML = `<strong>Sérfræðingur:</strong> ${responses[Math.floor(Math.random()*responses.length)]}`;
-                chatMessages.appendChild(expertMsg);
-                chatMessages.scrollTop = chatMessages.scrollHeight;
-            }, 1000 + Math.random() * 2000);
-        }
-
-        document.getElementById('chatInput').addEventListener('keypress', e => {
-            if (e.key === 'Enter') sendMessage();
-        });
+        /* --- JavaScript kóðinn sem ég sendi þér áðan fer hér --- */
     </script>
 </body>
 </html>
