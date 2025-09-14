@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="is">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skítastuð - Iðnaðartæki ehf.</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #ffd700;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: #ffd700;
+        }
+
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23f0f0f0" width="1200" height="600"/><g fill="%23ddd"><circle cx="200" cy="150" r="50"/><rect x="400" y="200" width="100" height="80"/><polygon points="800,100 850,200 750,200"/></g></svg>');
+            background-size: cover;
+            background-position: center;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+        }
+
+        .cta-button {
+            background: #ffd700;
+            color: #1e3c72;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            background: #ffed4e;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255,215,0,0.4);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section {
+            padding: 4rem 0;
+        }
+
+        .tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 3rem;
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 0.5rem;
+        }
+
+        .tab-button {
+            padding: 1rem 2rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 8px;
+            transition: all 0.3s;
+            color: #666;
+        }
+
+        .tab-button.active {
+            background: #1e3c72;
+            color: white;
+            box-shadow: 0 2px 10px rgba(30,60,114,0.3);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-left: 4px solid #ffd700;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+        }
+
+        .service-card h3 {
+            color: #1e3c72;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .service-card p {
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+
+        .price {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #e74c3c;
+            margin-bottom: 1rem;
+        }
+
+        .order-form {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #1e3c72;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #1e3c72;
+        }
+
+        .booking-section {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .booking-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .booking-card {
+            background: rgba(255,255,255,0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .expert-card {
+            background: white;
+            color: #333;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .expert-photo {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: #ddd;
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            max-width: 500px;
+            width: 90%;
+            max-height: 80%;
+            overflow-y: auto;
+        }
+
+        .close {
+            float: right;
+            font-size: 2rem;
+            cursor: pointer;
+            color: #999;
+        }
+
+        .close:hover {
+            color: #333;
+        }
+
+        .footer {
+            background: #1e3c72;
+            color: white;
+            padding: 3rem 0 1rem;
+            text-align: center;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            color: #ffd700;
+            margin-bottom: 1rem;
+        }
+
+        .status-indicator {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #2ecc71;
+            margin-right: 0.5rem;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .tabs {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="nav-container">
+            <div class="logo">⚡ SKÍTASTUÐ</div>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="#heim">Heim</a></li>
+                    <li><a href="#thjonusta">Þjónusta</a></li>
+                    <li><a href="#panta">Panta</a></li>
+                    <li><a href="#um-okkur">Um okkur</a></li>
+                    <li><a href="#samband">Samband</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero" id="heim">
+        <div class="hero-content">
+            <h1>SKÍTASTUÐ</h1>
+            <p>Leiðandi iðnaðartæki fyrir alla rafvirkja og pípara</p>
+            <a href="#thjonusta" class="cta-button">Skoða þjónustu</a>
+        </div>
+    </section>
+
+    <section class="section" id="thjonusta">
+        <div class="container">
+            <h2 style="text-align: center; font-size: 2.5rem; color: #1e3c72; margin-bottom: 2rem;">Þjónusta okkar</h2>
+            
+            <div class="tabs">
+                <button class="tab-button active" onclick="showTab('rafvirkja')">⚡ Rafvirkja hluti</button>
+                <button class="tab-button" onclick="showTab('pipara')">🔧 Pípara hluti</button>
+            </div>
+
+            <div id="rafvirkja" class="tab-content active">
+                <div class="services-grid">
+                    <div class="service-card">
+                        <h3>Rafmagnsstjórnkerfi</h3>
+                        <p>Háþróuð stjórnkerfi fyrir iðnaðarnotkun með fullkomna öryggisvirkni</p>
+                        <div class="price">Kr. 125.000 - 450.000</div>
+                        <button class="cta-button" onclick="openOrderModal('Rafmagnsstjórnkerfi')">Panta núna</button>
+                    </div>
+                    <div class="service-card">
+                        <h3>Kaplar og tengingar</h3>
+                        <p>Hágæða rafmagnskaplar og tengingar fyrir öll iðnaðarverkefni</p>
+                        <div class="price">Kr. 15.000 - 85.000</div>
+                        <button class="cta-button" onclick="openOrderModal('Kaplar og tengingar')">Panta núna</button>
+                    </div>
+                    <div class="service-card">
+                        <h3>Mæligæði og prófunartæki</h3>
+                        <p>Nákvæm mæligæði fyrir rafmagnsvinnu og öryggisprófanir</p>
+                        <div class="price">Kr. 35.000 - 180.000</div>
+                        <button class="cta-button" onclick="openOrderModal('Mæligæði')">Panta núna</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="pipara" class="tab-content">
+                <div class="services-grid">
+                    <div class="service-card">
+                        <h3>Pípulagnir og festingar</h3>
+                        <p>Öll pípukerfi fyrir vatn, hita og loftræstingu með faglegri uppsetningu</p>
+                        <div class="price">Kr. 45.000 - 320.000</div>
+                        <button class="cta-button" onclick="openOrderModal('Pípulagnir')">Panta núna</button>
+                    </div>
+                    <div class="service-card">
+                        <h3>Dælur og þrýstijafnvægi</h3>
+                        <p>Háþrýstidælur og þrýstistýrikerfi fyrir iðnaðarnotkun</p>
+                        <div class="price">Kr. 85.000 - 550.000</div>
+                        <button class="cta-button" onclick="openOrderModal('Dælur')">Panta núna</button>
+                    </div>
+                    <div class="service-card">
+                        <h3>Hitakerfi og stýringar</h3>
+                        <p>Sjálfvirk hitakerfi með snjallstýringum og orkunýtni</p>
+                        <div class="price">Kr. 95.000 - 680.000</div>
+                        <button class="cta-button" onclick="openOrderModal('Hitakerfi')">Panta núna</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="booking-section" id="panta">
+        <div class="container">
+            <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">Panta tíma hjá sérfræðingi</h2>
+            <p style="font-size: 1.2rem; margin-bottom: 3rem;">Fáðu persónulega ráðgjöf frá okkar sérfræðingum</p>
+            
+            <div class="booking-grid">
+                <div class="booking-card">
+                    <h3>📞 Símtal</h3>
+                    <p>Beint símtal við sérfræðing</p>
+                    <p><strong>Verð: Kr. 8.500/klst</strong></p>
+                    <button class="cta-button" onclick="openBookingModal('phone')">Panta símtal</button>
+                </div>
+                <div class="booking-card">
+                    <h3>💻 Vídeóspjall</h3>
+                    <p>Vídeóráðgjöf með skjáskiptingu</p>
+                    <p><strong>Verð: Kr. 12.000/klst</strong></p>
+                    <button class="cta-button" onclick="openBookingModal('video')">Panta vídeó</button>
+                </div>
+                <div class="booking-card">
+                    <h3>🏢 Heimsókn</h3>
+                    <p>Sérfræðingur kemur á staðinn</p>
+                    <p><strong>Verð: Kr. 25.000 + ferðakostnaður</strong></p>
+                    <button class="cta-button" onclick="openBookingModal('visit')">Panta heimsókn</button>
+                </div>
+            </div>
+
+            <div class="booking-grid" style="margin-top: 3rem;">
+                <div class="expert-card">
+                    <div class="expert-photo">👨‍🔧</div>
+                    <h3>Jón Rafvirkjason</h3>
+                    <p><strong>Sérfræðingur í rafmagni</strong></p>
+                    <p>15 ára reynsla • <span class="status-indicator"></span> Laus núna</p>
+                    <button class="cta-button" onclick="chatWithExpert('Jón Rafvirkjason')">Spjalla núna</button>
+                </div>
+                <div class="expert-card">
+                    <div class="expert-photo">👩‍🔧</div>
+                    <h3>Anna Píparason</h3>
+                    <p><strong>Sérfræðingur í pípulögnum</strong></p>
+                    <p>12 ára reynsla • <span class="status-indicator"></span> Laus núna</p>
+                    <button class="cta-button" onclick="chatWithExpert('Anna Píparason')">Spjalla núna</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Order Modal -->
+    <div id="orderModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('orderModal')">&times;</span>
+            <h3 id="orderTitle">Panta þjónustu</h3>
+            <form class="order-form" onsubmit="submitOrder(event)">
+                <div class="form-group">
+                    <label>Nafn:</label>
+                    <input type="text" id="orderName" required>
+                </div>
+                <div class="form-group">
+                    <label>Sími:</label>
+                    <input type="tel" id="orderPhone" required>
+                </div>
+                <div class="form-group">
+                    <label>Netfang:</label>
+                    <input type="email" id="orderEmail" required>
+                </div>
+                <div class="form-group">
+                    <label>Fyrirtæki:</label>
+                    <input type="text" id="orderCompany">
+                </div>
+                <div class="form-group">
+                    <label>Þjónusta:</label>
+                    <select id="orderService" required>
+                        <option value="">Veldu þjónustu</option>
+                        <option value="Rafmagnsstjórnkerfi">Rafmagnsstjórnkerfi</option>
+                        <option value="Kaplar og tengingar">Kaplar og tengingar</option>
+                        <option value="Mæligæði">Mæligæði og prófunartæki</option>
+                        <option value="Pípulagnir">Pípulagnir og festingar</option>
+                        <option value="Dælur">Dælur og þrýstijafnvægi</option>
+                        <option value="Hitakerfi">Hitakerfi og stýringar</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Lýsing á verkefni:</label>
+                    <textarea id="orderDescription" rows="4" placeholder="Lýstu verkefninu þínu..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Æskilegur tími:</label>
+                    <input type="datetime-local" id="orderDate">
+                </div>
+                <button type="submit" class="cta-button" style="width: 100%;">Senda beiðni og fá tilboð</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Booking Modal -->
+    <div id="bookingModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('bookingModal')">&times;</span>
+            <h3 id="bookingTitle">Bóka tíma</h3>
+            <form class="order-form" onsubmit="submitBooking(event)">
+                <div class="form-group">
+                    <label>Nafn:</label>
+                    <input type="text" id="bookingName" required>
+                </div>
+                <div class="form-group">
+                    <label>Sími:</label>
+                    <input type="tel" id="bookingPhone" required>
+                </div>
+                <div class="form-group">
+                    <label>Netfang:</label>
+                    <input type="email" id="bookingEmail" required>
+                </div>
+                <div class="form-group">
+                    <label>Tími:</label>
+                    <input type="datetime-local" id="bookingDate" required>
+                </div>
+                <div class="form-group">
+                    <label>Áætlaður tími (klst):</label>
+                    <select id="bookingDuration" required>
+                        <option value="1">1 klukkustund</option>
+                        <option value="2">2 klukkustundir</option>
+                        <option value="3">3 klukkustundir</option>
+                        <option value="4">4 klukkustundir</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Lýsing á vandamáli:</label>
+                    <textarea id="bookingDescription" rows="4" placeholder="Lýstu því sem þú þarft hjálp við..."></textarea>
+                </div>
+                <button type="submit" class="cta-button" style="width: 100%;">Staðfesta bókun</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Chat Modal -->
+    <div id="chatModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('chatModal')">&times;</span>
+            <h3 id="chatTitle">Spjall við sérfræðing</h3>
+            <div id="chatMessages" style="height: 300px; border: 1px solid #ddd; padding: 1rem; overflow-y: auto; margin-bottom: 1rem; background: #f9f9f9;">
+                <div style="color: #666; font-style: italic;">Tengist við sérfræðing...</div>
+            </div>
+            <div style="display: flex; gap: 1rem;">
+                <input type="text" id="chatInput" placeholder="Skrifaðu skilaboð..." style="flex: 1; padding: 0.8rem; border: 1px solid #ddd; border-radius: 5px;">
+                <button onclick="sendMessage()" class="cta-button">Senda</button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer" id="samband">
+        <div class="container">
+            <div style="text-align: center; padding: 2rem 0;">
+                <h2 style="color: #ffd700; margin-bottom: 2rem;">Um Skítastuð ehf.</h2>
+                <p style="font-size: 1.1rem; margin-bottom: 2rem; max-width: 800px; margin-left: auto; margin-right: auto;">
+                    Skítastuð ehf. hefur verið leiðandi í iðnaðartækjaiðnaði á Íslandi síðan 2010. 
+                    Við sérhæfum okkur í hágæða rafmagns- og pípulagnatækjum fyrir fagfólk og fyrirtæki.
+                    Okkar teymi af reyndum sérfræðingum býður upp á alhliða þjónustu frá ráðgjöf til uppsetningu.
+                </p>
+            </div>
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h3>Skítastuð ehf.</h3>
+                    <p>Leiðandi iðnaðartækjafyrirtæki á Íslandi</p>
+                    <p><strong>Sími:</strong> 555-1234</p>
+                    <p><strong>Netfang:</strong> info@skitastud.is</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Opnunartími</h3>
+                    <p>Mánudagur - Föstudagur: 08:00 - 17:00</p>
+                    <p>Laugardagur: 09:00 - 15:00</p>
+                    <p>Sunnudagur: Lokað</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Staðsetning</h3>
+                    <p>Iðntorg 15</p>
+                    <p>201 Kópavogur</p>
+                    <p>Ísland</p>
+                </div>
+            </div>
+            <div style="text-align: center; padding-top: 2rem; border-top: 1px solid #444; color: #ccc;">
+                <p>&copy; 2025 Skítastuð ehf. Öll réttindi áskilin.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Tab functionality
+        function showTab(tabName) {
+            // Hide all tab content
+            const tabContents = document.querySelectorAll('.tab-content');
+            tabContents.forEach(content => content.classList.remove('active'));
+            
+            // Remove active class from all buttons
+            const tabButtons = document.querySelectorAll('.tab-button');
+            tabButtons.forEach(button => button.classList.remove('active'));
+            
+            // Show selected tab content
+            document.getElementById(tabName).classList.add('active');
+            
+            // Add active class to clicked button
+            event.target.classList.add('active');
+        }
+
+        // Modal functionality
+        function openOrderModal(serviceName) {
+            document.getElementById('orderModal').style.display = 'flex';
+            document.getElementById('orderTitle').textContent = `Panta: ${serviceName}`;
+            document.getElementById('orderService').value = serviceName;
+        }
+
+        function openBookingModal(type) {
+            document.getElementById('bookingModal').style.display = 'flex';
+            const titles = {
+                'phone': 'Bóka símtal við sérfræðing',
+                'video': 'Bóka vídeóráðgjöf',
+                'visit': 'Bóka heimsókn'
+            };
+            document.getElementById('bookingTitle').textContent = titles[type];
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.style.display = 'none';
+            }
+        }
+
+        // Form submissions
+        function submitOrder(event) {
+            event.preventDefault();
+            
+            const formData = {
+                name: document.getElementById('orderName').value,
+                phone: document.getElementById('orderPhone').value,
+                email: document.getElementById('orderEmail').value,
+                company: document.getElementById('orderCompany').value,
+                service: document.getElementById('orderService').value,
+                description: document.getElementById('orderDescription').value,
+                date: document.getElementById('orderDate').value
+            };
+            
+            // Simulate order processing
+            alert(`Takk fyrir pöntunina, ${formData.name}!\n\nVi munum senda þér tilboð innan 24 klst á netfangið ${formData.email}.\n\nPöntunar númer: SK${Math.floor(Math.random() * 10000)}`);
+            closeModal('orderModal');
+            
+            // Reset form
+            event.target.reset();
+        }
+
+        function submitBooking(event) {
+            event.preventDefault();
+            
+            const formData = {
+                name: document.getElementById('bookingName').value,
+                phone: document.getElementById('bookingPhone').value,
+                email: document.getElementById('bookingEmail').value,
+                date: document.getElementById('bookingDate').value,
+                duration: document.getElementById('bookingDuration').value,
+                description: document.getElementById('bookingDescription').value
+            };
+            
+            const bookingDate = new Date(formData.date);
+            const cost = parseInt(formData.duration) * 12000; // Example calculation
+            
+            alert(`Bókun staðfest!\n\nNafn: ${formData.name}\nTími: ${bookingDate.toLocaleString('is-IS')}\nLengd: ${formData.duration} klst\nKostnaður: Kr. ${cost.toLocaleString()}\n\nÞú færð staðfestningu á ${formData.email}`);
+            closeModal('bookingModal');
+            
+            // Reset form
+            event.target.reset();
+        }
+
+        // Chat functionality
+        function chatWithExpert(expertName) {
+            document.getElementById('chatModal').style.display = 'flex';
+            document.getElementById('chatTitle').textContent = `Spjall við ${expertName}`;
+            
+            const chatMessages = document.getElementById('chatMessages');
+            chatMessages.innerHTML = `
+                <div style="background: #e3f2fd; padding: 0.5rem; margin: 0.5rem 0; border-radius: 5px;">
+                    <strong>${expertName}:</strong> Halló! Hvað get ég aðstoðað þig við í dag?
+                </div>
+            `;
+        }
+
+        function sendMessage() {
+            const input = document.getElementById('chatInput');
+            const message = input.value.trim();
+            
+            if (message) {
+                const chatMessages = document.getElementById('chatMessages');
+                
+                // Add user message
+                const userMsg = document.createElement('div');
+                userMsg.style.cssText = 'background: #f0f0f0; padding: 0.5rem; margin: 0.5rem 0; border-radius: 5px; text-align: right;';
+                userMsg.innerHTML = `<strong>Þú:</strong> ${message}`;
+                chatMessages.appendChild(userMsg);
+                
+                // Clear input
+                input.value = '';
+                
+                // Simulate expert response
+                setTimeout(() => {
+                    const expertMsg = document.createElement('div');
+                    expertMsg.style.cssText = 'background: #e3f2fd; padding: 0.5rem; margin: 0.5rem 0; border-radius: 5px;';
+                    
+                    const responses = [
+                        'Ég skil vandamálið. Gettu gefið mér fleiri upplýsingar?',
+                        'Það er gott spunking. Ég mæli með að við skoðum þetta nánar.',
+                        'Já, þetta er algeng staða. Ég get hjálpað þér með þessu.',
+                        'Láttu mig athuga þetta fyrir þig. Getur þú sent mynd?',
+                        'Ágætt, ég þarf að vita meira um kerfið þitt fyrst.'
+                    ];
+                    
+                    const randomResponse = responses[Math.floor(Math.random() * responses.length)];
+                    expertMsg.innerHTML = `<strong>Sérfræðingur:</strong> ${randomResponse}`;
+                    chatMessages.appendChild(expertMsg);
+                    
+                    // Scroll to bottom
+                    chatMessages.scrollTop = chatMessages.scrollHeight;
+                }, 1000 + Math.random() * 2000);
+                
+                // Scroll to bottom
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }
+        }
+        
+        // Handle Enter key in chat
+        document.getElementById('chatInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
