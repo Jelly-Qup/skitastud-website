@@ -1,0 +1,98 @@
+/* Reset some default styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Header styles */
+header {
+  background-color: #004d99;
+  color: #fff;
+  padding: 20px 0;
+  text-align: center;
+}
+
+header h1 {
+  font-size: 2.5em;
+  margin-bottom: 10px;
+}
+
+nav a {
+  color: #fff;
+  margin: 0 15px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+/* Hero section */
+.hero {
+  background: linear-gradient(to right, #0073e6, #00b3b3);
+  color: white;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.hero h2 {
+  font-size: 2em;
+  margin-bottom: 10px;
+}
+
+.hero p {
+  font-size: 1.2em;
+  margin-bottom: 20px;
+}
+
+.cta-button {
+  background-color: #fff;
+  color: #0073e6;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.cta-button:hover {
+  background-color: #e6f7ff;
+}
+
+/* Services section */
+.services {
+  padding: 40px 20px;
+  background-color: #fff;
+  text-align: center;
+}
+
+.services h3 {
+  font-size: 1.8em;
+  margin-bottom: 20px;
+}
+
+.services ul {
+  list-style: none;
+}
+
+.services li {
+  font-size: 1.2em;
+  margin: 10px 0;
+}
+
+/* Footer */
+footer {
+  background-color: #004d99;
+  color: #fff;
+  text-align: center;
+  padding: 15px 0;
+  font-size: 0.9em;
+}
